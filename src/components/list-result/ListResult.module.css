@@ -1,0 +1,14 @@
+.list__result-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem auto;
+  gap: 1rem;
+}
+
+/* For desktop */
+@media screen and (min-device-width: 1023px) {
+  .list__result-wrapper {
+    max-width: 400px;
+    margin-top: 4.5rem;
+  }
+}

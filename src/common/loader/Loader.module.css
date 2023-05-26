@@ -1,0 +1,23 @@
+.loader__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  margin: auto;
+  border: 10px solid var(--soft-grey);
+  border-radius: 50%;
+  border-top: 10px solid var(--blue);
+  width: 60px;
+  height: 60px;
+  animation: spinner 1.6s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

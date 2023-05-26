@@ -1,0 +1,46 @@
+.explorer__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.explorer__wrapper p {
+  color: var(--dark-grey);
+}
+
+.custom__input {
+  box-sizing: border-box;
+  padding: 1rem;
+  font-size: 14px;
+  width: 100%;
+  border-radius: 3px;
+  background-color: var(--soft-grey);
+  border: 1px solid var(--soft-grey);
+}
+
+.custom__btn {
+  box-sizing: border-box;
+  margin: 1rem 0;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  color: var(--white);
+  background: var(--blue);
+  border: 1px solid var(--blue);
+}
+
+.custom__btn.disabled {
+  cursor: not-allowed;
+  filter: opacity(0.5);
+}
+
+/* For desktop */
+@media screen and (min-device-width: 1023px) {
+  .custom__input,
+  .custom__btn {
+    width: 400px;
+    height: 52px;
+  }
+}

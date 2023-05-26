@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import { QueryClientProvider } from 'react-query';
+import combineProviders from 'context/combineProviders';
+import queryClient from 'network/queryClient';
+import { Explorer, ListResult } from './components';
+import GlobalProvider from 'context/GlobalContextProvider';
 import './App.css';
 
 function App() {
+
+  /**
+   * Combine providers
+   */
+  const Providers = combineProviders([
+    [QueryClientProvider, { client: queryClient }],
+    GlobalProvider,
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Providers>
+      <div className='app__container'>
+        <Explorer />
+        <ListResult />
+      </div>
+    </Providers>
   );
-}
+};
 
 export default App;
