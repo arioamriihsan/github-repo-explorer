@@ -4,14 +4,14 @@ import { useCallback, useState } from 'react';
  * Hook helper toggling boolean state
  */
 const useToggle = () => {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState<boolean>(false);
 
   // toggling `active` state
   const toggleActive = useCallback(() => {
     setActive((prevState) => !prevState);
   }, []);
 
-  // expose state and function side-effect
+  // Expose state and function side-effect
   return {
     active,
     toggleActive,

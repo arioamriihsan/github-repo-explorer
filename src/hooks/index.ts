@@ -1,4 +1,5 @@
-import useFetchUser from './useFetchUser';
+import useFetchUsers from './useFetchUsers';
+import useFetchRepos from './useFetchRepos';
 import useToggle from './useToggle';
 
-export { useFetchUser, useToggle };
+export { useFetchUsers, useFetchRepos, useToggle };

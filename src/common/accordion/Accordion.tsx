@@ -38,7 +38,9 @@ const Accordion: React.FC<AccordionProps> = ({ username }) => {
               <Star fill="#333" />
             </div>
           </div>
-          <Text type='body' htmlTag='p'>Repository Description</Text>
+          <Text type="body" htmlTag="p">
+            Repository Description
+          </Text>
         </div>
       )}
     </div>

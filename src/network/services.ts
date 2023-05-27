@@ -1,10 +1,19 @@
 import { AxiosResponse } from 'axios';
 import http from './http';
-import { API_URL } from './constant';
+import endpoints from './endpoints';
 import { ApiSuccessResponse } from './types/response.types';
 
 export const getUsers = (params: {
   q: string;
-  page: number;
   per_page: number;
-}): Promise<AxiosResponse<ApiSuccessResponse>> => http.get(API_URL, params);
+}): Promise<AxiosResponse<ApiSuccessResponse>> =>
+  http.get(endpoints.getUsers, params);
+
+export const getRepos = (
+  username: string,
+  params: {
+    per_page: number;
+    sort: string;
+  }
+): Promise<AxiosResponse<ApiSuccessResponse>> =>
+  http.get(endpoints.getRepos(username), params);

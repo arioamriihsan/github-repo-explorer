@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import classNames from 'classnames';
 import { Text } from 'common/text';
-import { useFetchUser } from 'hooks';
+import { useFetchUsers } from 'hooks';
 import { useGlobalContext } from 'context/GlobalContextProvider';
 import { isEmpty } from 'utils';
 import style from './Explorer.module.css';
@@ -14,11 +14,11 @@ import style from './Explorer.module.css';
  */
 const Explorer: React.FC = () => {
   // Get value & function from context provider
-  const { username, prevSuccessUsername, setUsername, setShouldFetch } =
+  const { username, prevSuccessUsername, setUsername, setShouldFetchUser } =
     useGlobalContext();
 
   // Get user list data
-  const { userListData, userListLoading } = useFetchUser();
+  const { userListData, userListLoading } = useFetchUsers();
   
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
@@ -33,7 +33,7 @@ const Explorer: React.FC = () => {
     // Update shouldFetch value to true (see GlobalContextProvider.tsx)
     // Everytime value true, will trigger API call. if success / error value 
     // will be set to false (see useFetchUser hook)
-    setShouldFetch(true);
+    setShouldFetchUser(true);
   };
 
   return (

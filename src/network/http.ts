@@ -1,13 +1,13 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { serializeParam } from './utils';
-import { API_TIME_OUT, API_URL } from './constant';
+import { API_TIME_OUT, BASE_API_URL } from './constant';
 
 /**
  * Create Axios Instance with default
  */
 export const apiInstance = axios.create({
   timeout: API_TIME_OUT,
-  baseURL: API_URL,
+  baseURL: BASE_API_URL
 });
 
 /**

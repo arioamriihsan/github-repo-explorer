@@ -14,10 +14,10 @@ interface Props {
 interface GlobalContextType {
   username: string;
   prevSuccessUsername: string;
-  shouldFetch: boolean;
+  shouldFetchUser: boolean;
   setUsername: Dispatch<SetStateAction<string>>;
   setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
-  setShouldFetch: Dispatch<SetStateAction<boolean>>;
+  setShouldFetchUser: Dispatch<SetStateAction<boolean>>;
 }
 
 export const GlobalContext = createContext<GlobalContextType | undefined>(
@@ -31,16 +31,16 @@ const GlobalProvider: React.FC<Props> = ({ children }) => {
   /** Get previous success username. Displayed in Explorer.tsx */
   const [prevSuccessUsername, setPrevSuccessUserName] = useState<string>('');
 
-  /** Determine action to call API */
-  const [shouldFetch, setShouldFetch] = useState<boolean>(false);
+  /** Determine action to call API get users */
+  const [shouldFetchUser, setShouldFetchUser] = useState<boolean>(false);
 
   const GlobalProviderValue = {
     username,
     prevSuccessUsername,
-    shouldFetch,
+    shouldFetchUser,
     setUsername,
     setPrevSuccessUserName,
-    setShouldFetch
+    setShouldFetchUser
   };
 
   return (
