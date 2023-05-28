@@ -36,12 +36,16 @@
   filter: opacity(0.5);
 }
 
+.custom__input,
+.custom__btn {
+  font-size: 20px;
+}
+
 /* For desktop */
 @media screen and (min-device-width: 1023px) {
   .custom__input,
   .custom__btn {
     width: 400px;
     height: 52px;
-    font-size: 20px;
   }
 }
