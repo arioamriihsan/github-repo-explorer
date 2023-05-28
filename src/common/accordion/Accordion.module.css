@@ -15,3 +15,7 @@
 .accordion__header.active svg {
   rotate: 180deg;
 }
+
+.accordion__body {
+  padding-bottom: 1rem;
+}

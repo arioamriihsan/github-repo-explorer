@@ -1,4 +1,4 @@
-.list__result-wrapper {
+.list__users-wrapper {
   display: flex;
   flex-direction: column;
   margin: 1.5rem auto;
@@ -7,7 +7,7 @@
 
 /* For desktop */
 @media screen and (min-device-width: 1023px) {
-  .list__result-wrapper {
+  .list__users-wrapper {
     max-width: 400px;
     margin-top: 2.5rem;
   }

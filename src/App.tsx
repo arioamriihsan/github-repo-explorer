@@ -1,7 +1,7 @@
 import { QueryClientProvider } from 'react-query';
 import combineProviders from 'context/combineProviders';
 import queryClient from 'network/queryClient';
-import { Explorer, ListResult } from './components';
+import { Explorer, ListUsers } from './components';
 import GlobalProvider from 'context/GlobalContextProvider';
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
     <Providers>
       <div className='app__container'>
         <Explorer />
-        <ListResult />
+        <ListUsers />
       </div>
     </Providers>
   );

@@ -1,34 +1,50 @@
-import React, { PropsWithChildren } from 'react';
+import React, {
+  PropsWithChildren,
+  ReactNode,
+  ReactElement,
+  Children,
+  cloneElement
+} from 'react';
 import { ChevronDown } from 'react-feather';
 import classNames from 'classnames';
 import { Text } from 'common/text';
-import { useToggle } from 'hooks';
-import { ReposDetail } from './components';
 import style from './Accordion.module.css';
 
-export interface AccordionProps {
-  username: string;
+interface AccordionProps {
+  accordionLabel: string;
+  active: boolean;
+  onClick: () => void;
+  children: ReactNode;
 }
 
 const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
-  username
+  accordionLabel,
+  active,
+  onClick,
+  children
 }) => {
-  const { active, toggleActive } = useToggle();
-
   return (
-    <div className={style['accordion__wrapper']} onClick={toggleActive}>
+    <div className={style['accordion__wrapper']} onClick={onClick}>
       <div
         className={classNames(style['accordion__header'], {
           [style['active']]: active
         })}
       >
         <Text type="title" htmlTag="p">
-          {username}
+          {accordionLabel}
         </Text>
         <ChevronDown />
       </div>
 
-      {active && <ReposDetail username={username} active={active} />}
+      {/* Show accordion body when active is true */}
+      {active && (
+        <div className={style['accordion__body']}>
+          {Children.map(children, (child) =>
+            // Passing prop active to children
+            cloneElement(child as ReactElement<any>, { active })
+          )}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { Explorer } from './explorer';
-import { ListResult } from './list-result';
+import { ListUsers } from './list-users';
+import { ReposDetail } from './repos-detail';
 
-export { Explorer, ListResult }
+export { Explorer, ListUsers, ReposDetail };

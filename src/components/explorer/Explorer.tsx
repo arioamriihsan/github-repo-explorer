@@ -21,7 +21,7 @@ const Explorer: React.FC = () => {
   const { userListData, userListLoading } = useFetchUsers();
   
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setUsername(event.target.value);
+    setUsername(event?.target?.value);
   };
 
   const handleClick = () => {

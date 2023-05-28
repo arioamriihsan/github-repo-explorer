@@ -1,19 +1,13 @@
 import React from 'react';
 import { Star } from 'react-feather';
-import { useReposValidator } from 'hooks';
 import { Text } from 'common/text';
-import { AccordionProps } from 'common/accordion/Accordion';
 import style from './ReposDetail.module.css';
 
-interface ReposDetailProps extends AccordionProps {
-  active: boolean;
+interface ReposDetailProps {
+	active: boolean;
 }
 
-const ReposDetail: React.FC<ReposDetailProps> = ({ username, active }) => {
-  const { shouldFetchRepo } = useReposValidator(username, active);
-
-  if (!shouldFetchRepo) return null;
-
+const ReposDetail: React.FC<ReposDetailProps> = ({ active }) => {
   return (
     <div className={style['repos__detail']}>
       <div className={style['repos__detail-header']}>
