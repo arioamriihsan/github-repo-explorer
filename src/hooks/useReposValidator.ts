@@ -22,15 +22,20 @@ const useReposValidator = (
   username: string,
   active: boolean
 ): ReposValidatorResult => {
-  const { repoIdHistory } = useGlobalContext();
+  const { reposOwnerHistory } = useGlobalContext();
 
-	console.log({ repoIdHistory });
+  /**
+   * Tracking if username has been searched. As long as user has not input new username yet
+   *
+   * @example const reposOwnerHistory = ['arifitanto', 'oktarian'], username 'arifitanto has been searched'
+   */
+  const usernameHasBeenSearched = reposOwnerHistory.includes(username);
 
   const shouldFetchRepo = useMemo(() => {
-    if (!!username && active) return true;
-
+    if (!!username && active && !usernameHasBeenSearched) return true;
+    // Fallback
     return false;
-  }, [username, active]);
+  }, [username, active, usernameHasBeenSearched]);
 
   const {
     data,

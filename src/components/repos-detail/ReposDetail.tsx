@@ -1,13 +1,19 @@
 import React from 'react';
 import { Star } from 'react-feather';
+import { useReposValidator } from 'hooks';
 import { Text } from 'common/text';
 import style from './ReposDetail.module.css';
 
 interface ReposDetailProps {
+  username: string;
 	active: boolean;
 }
 
-const ReposDetail: React.FC<ReposDetailProps> = ({ active }) => {
+const ReposDetail: React.FC<ReposDetailProps> = ({ username, active }) => {
+  const { reposData } = useReposValidator(username, active);
+  
+  console.log({ reposData });
+
   return (
     <div className={style['repos__detail']}>
       <div className={style['repos__detail-header']}>

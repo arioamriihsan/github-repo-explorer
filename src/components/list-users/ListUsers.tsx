@@ -49,7 +49,10 @@ const ListResult: React.FC = () => {
               active={user?.id === activeAccordionId}
               onClick={() => handleAccordionClick(user?.id)}
             >
-              <ReposDetail active={user?.id === activeAccordionId} />
+              <ReposDetail 
+                username={user?.login}
+                active={user?.id === activeAccordionId} 
+              />
             </Accordion>
           ))}
         </>

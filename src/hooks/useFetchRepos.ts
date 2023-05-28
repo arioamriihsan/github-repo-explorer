@@ -5,7 +5,7 @@ import { LIMIT_REPO_PER_PAGE } from 'network/constant';
 import { isEmpty } from 'utils';
 
 const useFetchRepo = (username: string, enabled = false) => {
-  const { repoIdHistory, setRepoIdHistory } = useGlobalContext();
+  const { reposOwnerHistory, setReposOwnerHistory } = useGlobalContext();
 
   return useQuery(
     ['List Repos'], // Query key
@@ -16,16 +16,16 @@ const useFetchRepo = (username: string, enabled = false) => {
       }),
     {
       enabled,
-      onSuccess: (resp) => {
-        const reposId: number[] = [];
-        resp?.data?.forEach(data => reposId.push(data?.id));
+      onSuccess: () => {
+        const reposOwner: string[] = [];
+        reposOwner.push(username);
 
         // Assuming init search
-        if (isEmpty(repoIdHistory)) {
-          return setRepoIdHistory(reposId);
+        if (isEmpty(reposOwnerHistory)) {
+          return setReposOwnerHistory(reposOwner);
         } 
         // Adding new repo id to repoIsHistory
-        return setRepoIdHistory(prevState => prevState.concat(reposId));
+        return setReposOwnerHistory(prevState => prevState.concat(reposOwner));
       }
     }
   );

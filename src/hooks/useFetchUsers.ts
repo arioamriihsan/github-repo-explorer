@@ -9,7 +9,8 @@ const useFetchUser = () => {
     shouldFetchUser,
     prevSuccessUsername,
     setShouldFetchUser,
-    setPrevSuccessUserName
+    setPrevSuccessUserName,
+    clearReposOwnerHistory
   } = useGlobalContext();
 
   const fetchUser = useQuery(
@@ -23,17 +24,15 @@ const useFetchUser = () => {
       enabled:
         !!username && shouldFetchUser && username !== prevSuccessUsername,
 
-      // Honestly not best practice we use method GET triggered by button.
-      // We can use useMutation for POST method.
-      // For now, the solution is we set staleTime to zero to make request.
-      staleTime: 0,
-
       onSuccess: () => {
         // SetShouldFetch to false, so if we click button again will hit API
         setShouldFetchUser(false);
 
         // Set previous success username to be displayed in Explorer.tsx
         setPrevSuccessUserName(username);
+
+        // Clear reposOwnerHistory to empty array, allowed fetch next detail repo user
+        clearReposOwnerHistory();
       },
       onError: () => setShouldFetchUser(false)
     }

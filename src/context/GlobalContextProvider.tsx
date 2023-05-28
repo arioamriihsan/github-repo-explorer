@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useCallback,
   useContext,
   createContext,
   ReactNode,
@@ -15,11 +16,12 @@ interface GlobalContextType {
   username: string;
   prevSuccessUsername: string;
   shouldFetchUser: boolean;
-  repoIdHistory: number[];
+  reposOwnerHistory: string[];
   setUsername: Dispatch<SetStateAction<string>>;
   setShouldFetchUser: Dispatch<SetStateAction<boolean>>;
   setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
-  setRepoIdHistory: Dispatch<SetStateAction<number[]>>
+  setReposOwnerHistory: Dispatch<SetStateAction<string[]>>
+  clearReposOwnerHistory: () => void;
 }
 
 export const GlobalContext = createContext<GlobalContextType | undefined>(
@@ -37,17 +39,25 @@ const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [shouldFetchUser, setShouldFetchUser] = useState<boolean>(false);
 
   // Tracking repo history to prevent double hit API when open accordion
-  const [repoIdHistory, setRepoIdHistory] = useState<number[]>([]);
+  const [reposOwnerHistory, setReposOwnerHistory] = useState<string[]>([]);
+
+  /**
+   * Function to clear repoIdHistory
+   */
+  const clearReposOwnerHistory = useCallback(() => {
+    setReposOwnerHistory([]);
+  }, []);
 
   const GlobalProviderValue = {
     username,
     prevSuccessUsername,
     shouldFetchUser,
-    repoIdHistory,
+    reposOwnerHistory,
     setUsername,
     setShouldFetchUser,
     setPrevSuccessUserName,
-    setRepoIdHistory
+    setReposOwnerHistory,
+    clearReposOwnerHistory
   };
 
   return (
