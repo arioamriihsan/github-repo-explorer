@@ -1,0 +1,67 @@
+.repo__loader-wrapper {
+  text-align: start;
+  padding: 1.5rem 0rem;
+}
+
+.repo__loader-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rating__loader {
+  display: flex;
+  align-items: center;
+}
+
+.rating__loader svg {
+  margin-left: 0.5rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.repo__loader {
+  background: linear-gradient(
+    90deg,
+    rgba(83, 79, 79, 0.1),
+    rgba(83, 79, 79, 0.5),
+    rgba(83, 79, 79, 0.8)
+  );
+  border-radius: 9px;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.title {
+  height: 1.5em;
+  width: 120px;
+}
+
+.rating {
+  height: 1.5em;
+  width: 40px;
+}
+
+.repo__loader-desc {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  row-gap: 0.5rem;
+}
+
+.desc1 {
+  height: 1em;
+  width: 200px;
+}
+
+.desc2 {
+  height: 1em;
+  width: 150px;
+}

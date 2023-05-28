@@ -1,0 +1,12 @@
+.repo__error {
+  padding-bottom: 1.5rem;
+}
+
+.repo__error-btn {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid var(--blue);
+  background: var(--blue);
+  color: var(--white);
+}

@@ -1,0 +1,22 @@
+.repo__item-wrapper {
+  text-align: start;
+}
+
+.repo__item-wrapper:not(:first-child) {
+  border-top: 1px solid var(--black);
+}
+
+.repo__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.repo__item-header svg {
+  margin-left: 0.5rem;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}

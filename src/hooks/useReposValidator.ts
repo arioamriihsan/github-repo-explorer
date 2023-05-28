@@ -1,13 +1,12 @@
 import { useMemo } from 'react';
 import useFetchRepo from './useFetchRepos';
 import { useGlobalContext } from 'context/GlobalContextProvider';
-import { FetchRepoSuccessResponse } from 'network/types/response.types';
 
 interface ReposValidatorResult {
   shouldFetchRepo: boolean;
-  reposData: FetchRepoSuccessResponse[] | undefined;
   reposDataLoading: boolean;
   reposDataError: boolean;
+  refetchRepos: any;
 }
 
 /**
@@ -26,30 +25,32 @@ const useReposValidator = (
 
   /**
    * Tracking if username has been searched. As long as user has not input new username yet
-   *
-   * @example const reposOwnerHistory = ['arifitanto', 'oktarian'], username 'arifitanto has been searched'
+   * 
+   * @example const reposOwnerHistory = [username: 'arifitanto', repos: [{id: 1, name: 'Github Repo Explorer'}]]
+   * @summary As long as we don't input new username, it won't double hit API repos with username 'arifitanto'
    */
-  const usernameHasBeenSearched = reposOwnerHistory.includes(username);
+  const usernameHasBeenSearched = reposOwnerHistory.some(
+    (value) => value?.username === username
+  );
 
   const shouldFetchRepo = useMemo(() => {
     if (!!username && active && !usernameHasBeenSearched) return true;
+
     // Fallback
     return false;
   }, [username, active, usernameHasBeenSearched]);
 
   const {
-    data,
     isFetching: reposDataLoading,
-    isError: reposDataError
+    isError: reposDataError,
+    refetch: refetchRepos
   } = useFetchRepo(username, shouldFetchRepo);
-
-  const reposData = data?.data;
 
   return {
     shouldFetchRepo,
-    reposData,
     reposDataLoading,
-    reposDataError
+    reposDataError,
+    refetchRepos
   };
 };
 

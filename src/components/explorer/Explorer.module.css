@@ -42,5 +42,6 @@
   .custom__btn {
     width: 400px;
     height: 52px;
+    font-size: 20px;
   }
 }

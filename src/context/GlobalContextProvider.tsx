@@ -7,20 +7,26 @@ import React, {
   Dispatch,
   SetStateAction
 } from 'react';
+import { FetchRepoSuccessResponse } from 'network/types/response.types';
 
 interface Props {
   children: ReactNode;
+}
+
+export interface ReposOwnerHistory {
+  username: string;
+  repos: FetchRepoSuccessResponse[];
 }
 
 interface GlobalContextType {
   username: string;
   prevSuccessUsername: string;
   shouldFetchUser: boolean;
-  reposOwnerHistory: string[];
+  reposOwnerHistory: ReposOwnerHistory[];
   setUsername: Dispatch<SetStateAction<string>>;
   setShouldFetchUser: Dispatch<SetStateAction<boolean>>;
   setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
-  setReposOwnerHistory: Dispatch<SetStateAction<string[]>>
+  setReposOwnerHistory: Dispatch<SetStateAction<ReposOwnerHistory[]>>;
   clearReposOwnerHistory: () => void;
 }
 
@@ -32,14 +38,16 @@ const GlobalProvider: React.FC<Props> = ({ children }) => {
   // Username from input
   const [username, setUsername] = useState<string>('');
 
-  // Get previous success username. Displayed in Explorer.tsx 
+  // Get previous success username. Displayed in Explorer.tsx
   const [prevSuccessUsername, setPrevSuccessUserName] = useState<string>('');
 
   // Determine action to call API to get users
   const [shouldFetchUser, setShouldFetchUser] = useState<boolean>(false);
 
   // Tracking repo history to prevent double hit API when open accordion
-  const [reposOwnerHistory, setReposOwnerHistory] = useState<string[]>([]);
+  const [reposOwnerHistory, setReposOwnerHistory] = useState<
+    ReposOwnerHistory[]
+  >([]);
 
   /**
    * Function to clear repoIdHistory

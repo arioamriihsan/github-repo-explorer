@@ -1,7 +1,7 @@
 .list__users-wrapper {
   display: flex;
   flex-direction: column;
-  margin: 1.5rem auto;
+  margin: 1.5rem auto 0;
   gap: 1rem;
 }
 

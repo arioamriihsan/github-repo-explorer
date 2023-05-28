@@ -24,7 +24,7 @@ const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
   children
 }) => {
   return (
-    <div className={style['accordion__wrapper']} onClick={onClick}>
+    <div className={style['accordion__wrapper']}>
       <div
         className={classNames(style['accordion__header'], {
           [style['active']]: active
@@ -33,7 +33,7 @@ const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
         <Text type="title" htmlTag="p">
           {accordionLabel}
         </Text>
-        <ChevronDown />
+        <ChevronDown onClick={onClick} />
       </div>
 
       {/* Show accordion body when active is true */}

@@ -1,18 +1,8 @@
-.repos__detail {
-  text-align: start;
-}
-
-.repos__detail-header {
+.repos__detail-wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.repos__detail-header svg {
-  margin-left: 0.5rem;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--black);
 }

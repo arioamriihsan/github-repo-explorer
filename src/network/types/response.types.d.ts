@@ -16,4 +16,5 @@ export interface FetchRepoSuccessResponse {
   name: string;
   stargazers_count: number;
   description?: string;
+  owner: Item;
 }

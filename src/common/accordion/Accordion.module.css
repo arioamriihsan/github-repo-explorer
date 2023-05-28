@@ -1,7 +1,6 @@
 .accordion__wrapper {
   padding: 0 1rem;
   border-radius: 3px;
-  cursor: pointer;
   border: 1px solid var(--soft-grey);
   background: var(--soft-grey);
 }
@@ -14,6 +13,11 @@
 
 .accordion__header.active svg {
   rotate: 180deg;
+}
+
+.accordion__header svg,
+.accordion__header.active svg {
+  cursor: pointer;
 }
 
 .accordion__body {
