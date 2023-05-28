@@ -1,7 +1,7 @@
 import React, {
-  createContext,
   useState,
   useContext,
+  createContext,
   ReactNode,
   Dispatch,
   SetStateAction
@@ -15,9 +15,11 @@ interface GlobalContextType {
   username: string;
   prevSuccessUsername: string;
   shouldFetchUser: boolean;
+  repoIdHistory: number[];
   setUsername: Dispatch<SetStateAction<string>>;
-  setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
   setShouldFetchUser: Dispatch<SetStateAction<boolean>>;
+  setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
+  setRepoIdHistory: Dispatch<SetStateAction<number[]>>
 }
 
 export const GlobalContext = createContext<GlobalContextType | undefined>(
@@ -25,22 +27,27 @@ export const GlobalContext = createContext<GlobalContextType | undefined>(
 );
 
 const GlobalProvider: React.FC<Props> = ({ children }) => {
-  /** Username from input */
+  // Username from input
   const [username, setUsername] = useState<string>('');
 
-  /** Get previous success username. Displayed in Explorer.tsx */
+  // Get previous success username. Displayed in Explorer.tsx 
   const [prevSuccessUsername, setPrevSuccessUserName] = useState<string>('');
 
-  /** Determine action to call API get users */
+  // Determine action to call API to get users
   const [shouldFetchUser, setShouldFetchUser] = useState<boolean>(false);
+
+  // Tracking repo history to prevent double hit API when open accordion
+  const [repoIdHistory, setRepoIdHistory] = useState<number[]>([]);
 
   const GlobalProviderValue = {
     username,
     prevSuccessUsername,
     shouldFetchUser,
+    repoIdHistory,
     setUsername,
+    setShouldFetchUser,
     setPrevSuccessUserName,
-    setShouldFetchUser
+    setRepoIdHistory
   };
 
   return (

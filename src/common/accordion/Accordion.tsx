@@ -1,15 +1,18 @@
-import React from 'react';
-import { ChevronDown, Star } from 'react-feather';
+import React, { PropsWithChildren } from 'react';
+import { ChevronDown } from 'react-feather';
 import classNames from 'classnames';
-import { useToggle } from 'hooks';
 import { Text } from 'common/text';
+import { useToggle } from 'hooks';
+import { ReposDetail } from './components';
 import style from './Accordion.module.css';
 
-interface AccordionProps {
+export interface AccordionProps {
   username: string;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ username }) => {
+const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
+  username
+}) => {
   const { active, toggleActive } = useToggle();
 
   return (
@@ -25,24 +28,7 @@ const Accordion: React.FC<AccordionProps> = ({ username }) => {
         <ChevronDown />
       </div>
 
-      {active && (
-        <div className={style['accordion__detail']}>
-          <div className={style['accordion__detail-header']}>
-            <Text type="title" htmlTag="p">
-              Repository Title
-            </Text>
-            <div className={style['rating']}>
-              <Text type="title" htmlTag="p">
-                12
-              </Text>
-              <Star fill="#333" />
-            </div>
-          </div>
-          <Text type="body" htmlTag="p">
-            Repository Description
-          </Text>
-        </div>
-      )}
+      {active && <ReposDetail username={username} active={active} />}
     </div>
   );
 };

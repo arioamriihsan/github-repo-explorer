@@ -20,7 +20,8 @@ const useFetchUser = () => {
       // 1. username is not empty
       // 2. shouldFetch from GlobalContext is true
       // 3. username !== prevSuccessUsername
-      enabled: !!username && shouldFetchUser && username !== prevSuccessUsername,
+      enabled:
+        !!username && shouldFetchUser && username !== prevSuccessUsername,
 
       // Honestly not best practice we use method GET triggered by button.
       // We can use useMutation for POST method.

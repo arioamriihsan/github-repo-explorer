@@ -1,7 +1,7 @@
 /**
  * Function to check if value is empty
  * 
- * @param value 
+ * @param {*} value
  * @returns {boolean}
  */
 export const isEmpty = (value: any): boolean =>

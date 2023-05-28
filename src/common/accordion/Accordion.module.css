@@ -15,23 +15,3 @@
 .accordion__header.active svg {
   rotate: 180deg;
 }
-
-.accordion__detail {
-  text-align: start;
-  padding-bottom: 1rem;
-}
-
-.accordion__detail-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-}
-
-.accordion__detail-header svg {
-  margin-left: 0.5rem;
-}

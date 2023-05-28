@@ -1,12 +1,15 @@
 import { AxiosResponse } from 'axios';
 import http from './http';
 import endpoints from './endpoints';
-import { ApiSuccessResponse } from './types/response.types';
+import {
+  FetchUserSuccessResponse,
+  FetchRepoSuccessResponse
+} from './types/response.types';
 
 export const getUsers = (params: {
   q: string;
   per_page: number;
-}): Promise<AxiosResponse<ApiSuccessResponse>> =>
+}): Promise<AxiosResponse<FetchUserSuccessResponse>> =>
   http.get(endpoints.getUsers, params);
 
 export const getRepos = (
@@ -15,5 +18,5 @@ export const getRepos = (
     per_page: number;
     sort: string;
   }
-): Promise<AxiosResponse<ApiSuccessResponse>> =>
+): Promise<AxiosResponse<FetchRepoSuccessResponse[]>> =>
   http.get(endpoints.getRepos(username), params);
