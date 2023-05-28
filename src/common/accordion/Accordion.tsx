@@ -5,8 +5,7 @@ import React, {
   Children,
   cloneElement
 } from 'react';
-import { ChevronDown } from 'react-feather';
-import classNames from 'classnames';
+import { ChevronDown, ChevronUp } from 'react-feather';
 import { Text } from 'common/text';
 import style from './Accordion.module.css';
 
@@ -25,15 +24,13 @@ const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
 }) => {
   return (
     <div className={style['accordion__wrapper']}>
-      <div
-        className={classNames(style['accordion__header'], {
-          [style['active']]: active
-        })}
-      >
+      <div className={style['accordion__header']}>
         <Text type="title" htmlTag="p">
           {accordionLabel}
         </Text>
-        <ChevronDown onClick={onClick} />
+        <span onClick={onClick}>
+          {active ? <ChevronUp /> : <ChevronDown />}
+        </span>
       </div>
 
       {/* Show accordion body when active is true */}

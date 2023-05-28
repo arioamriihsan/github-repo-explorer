@@ -11,12 +11,7 @@
   align-items: center;
 }
 
-.accordion__header.active svg {
-  rotate: 180deg;
-}
-
-.accordion__header svg,
-.accordion__header.active svg {
+.accordion__header svg {
   cursor: pointer;
 }
 
