@@ -18,9 +18,12 @@ const RepoLoading: React.FC = () => {
         </div>
       </div>
       <div className={style['repo__loader-desc']}>
-        <div className={classNames([style['repo__loader']], [style['desc1']])} />
-        <div className={classNames([style['repo__loader']], [style['desc2']])} />
-        <div className={classNames([style['repo__loader']], [style['desc3']])} />
+        <div
+          className={classNames([style['repo__loader']], [style['desc1']])}
+        />
+        <div
+          className={classNames([style['repo__loader']], [style['desc2']])}
+        />
       </div>
     </div>
   );
