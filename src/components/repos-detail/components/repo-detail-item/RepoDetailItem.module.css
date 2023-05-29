@@ -13,6 +13,10 @@
   gap: 1.5rem;
 }
 
+.repo__item-header p:first-child {
+  word-break: break-all;
+}
+
 .repo__item-header svg {
   margin-left: 0.5rem;
 }
