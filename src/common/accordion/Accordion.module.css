@@ -11,6 +11,11 @@
   align-items: center;
 }
 
+.accordion__header p {
+  word-break: break-all;
+  text-align: start;
+}
+
 .accordion__header svg {
   cursor: pointer;
 }

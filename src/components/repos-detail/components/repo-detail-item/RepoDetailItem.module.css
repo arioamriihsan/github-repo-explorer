@@ -9,7 +9,8 @@
 .repo__item-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
+  gap: 1.5rem;
 }
 
 .repo__item-header svg {
