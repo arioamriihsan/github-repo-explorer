@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useFetchUsers } from 'hooks';
 import { useGlobalContext } from 'context/GlobalContextProvider';
 import { ReposDetail } from 'components';
-import { Text, Loader } from 'common';
-import Accordion from 'common/accordion/Accordion';
+import { Text, Loader, Accordion } from 'common';
 import { isEmpty } from 'utils';
 import style from './ListUsers.module.css';
 
