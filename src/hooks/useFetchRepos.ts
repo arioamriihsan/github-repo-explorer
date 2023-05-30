@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import {
   useGlobalContext,
-  ReposOwnerHistory
+  ReposDataType
 } from 'context/GlobalContextProvider';
 import { getRepos } from 'network/services';
 import { LIMIT_REPO_PER_PAGE } from 'network/constant';
@@ -9,7 +9,7 @@ import { isEmpty } from 'utils';
 import { FetchRepoSuccessResponse } from 'network/types/response.types';
 
 const useFetchRepo = (username: string, enabled = false) => {
-  const { reposOwnerHistory, setReposOwnerHistory, setRepoRateLimit } =
+  const { reposData, setReposData, setRepoRateLimit } =
     useGlobalContext();
 
   return useQuery(
@@ -22,7 +22,7 @@ const useFetchRepo = (username: string, enabled = false) => {
     {
       enabled,
       onSuccess: (resp) => {
-        const reposHistory: ReposOwnerHistory[] = [];
+        const reposArr: ReposDataType[] = [];
         const reposDetail = resp?.data?.map(
           ({
             id,
@@ -38,18 +38,22 @@ const useFetchRepo = (username: string, enabled = false) => {
             owner
           })
         );
-        reposHistory.push({ username, repos: reposDetail });
-
-        // Restore repo error message
+        
+        // Output of reposArr be like 
+        // [{username: 'arifitanto', repos: [{id: 1, name: 'Github Repo Explorer', ...}]}]
+        reposArr.push({ username, repos: reposDetail });
+        
+        // Restore repos rate limit
         setRepoRateLimit(false);
 
         // Assuming init search
-        if (isEmpty(reposOwnerHistory)) {
-          return setReposOwnerHistory(reposHistory);
+        if (isEmpty(reposData)) {
+          return setReposData(reposArr);
         }
-        // Adding response to repoIsHistory
-        return setReposOwnerHistory((prevState) =>
-          prevState.concat(reposHistory)
+
+        // Concat to previous repos data
+        return setReposData((prevState) =>
+          prevState.concat(reposArr)
         );
       },
       onError: (err: any) => {

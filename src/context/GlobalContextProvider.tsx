@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { FetchRepoSuccessResponse } from 'network/types/response.types';
 
-export interface ReposOwnerHistory {
+export interface ReposDataType {
   username: string;
   repos: FetchRepoSuccessResponse[];
 }
@@ -18,12 +18,12 @@ interface GlobalContextType {
   username: string;
   prevSuccessUsername: string;
   shouldFetchUser: boolean;
-  reposOwnerHistory: ReposOwnerHistory[];
+  reposData: ReposDataType[];
   repoRateLimit: boolean;
   setUsername: Dispatch<SetStateAction<string>>;
   setShouldFetchUser: Dispatch<SetStateAction<boolean>>;
   setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
-  setReposOwnerHistory: Dispatch<SetStateAction<ReposOwnerHistory[]>>;
+  setReposData: Dispatch<SetStateAction<ReposDataType[]>>;
   setRepoRateLimit: Dispatch<SetStateAction<boolean>>;
   clearReposOwnerHistory: () => void;
 }
@@ -42,31 +42,27 @@ const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // Determine action to call API to get users
   const [shouldFetchUser, setShouldFetchUser] = useState<boolean>(false);
 
-  // Tracking repo history to prevent double hit API when open accordion
-  const [reposOwnerHistory, setReposOwnerHistory] = useState<
-    ReposOwnerHistory[]
-  >([]);
+  // Display repos detail by username. Please note we set data from useFetchRepos.tsx
+  const [reposData, setReposData] = useState<ReposDataType[]>([]);
 
-  /** State to prevent looping API to fetch repo when API throw an error */
+  // State to prevent looping API to fetch repo when API throw an error
   const [repoRateLimit, setRepoRateLimit] = useState<boolean>(false);
 
-  /**
-   * Function to clear repoIdHistory
-   */
+  /** Function to clear repos data */
   const clearReposOwnerHistory = useCallback(() => {
-    setReposOwnerHistory([]);
+    setReposData([]);
   }, []);
 
   const GlobalProviderValue = {
     username,
     prevSuccessUsername,
     shouldFetchUser,
-    reposOwnerHistory,
+    reposData,
     repoRateLimit,
     setUsername,
     setShouldFetchUser,
     setPrevSuccessUserName,
-    setReposOwnerHistory,
+    setReposData,
     setRepoRateLimit,
     clearReposOwnerHistory
   };

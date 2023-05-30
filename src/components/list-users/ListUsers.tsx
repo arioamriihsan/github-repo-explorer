@@ -14,6 +14,7 @@ const ListResult: React.FC = () => {
     null
   );
 
+  // Define rate limit API from context
   const { repoRateLimit, setRepoRateLimit } = useGlobalContext();
 
   // Get user list data
@@ -23,7 +24,7 @@ const ListResult: React.FC = () => {
   /**
    * Handle click accordion. One active accordion will closed another.
    *
-   * @example Accordion1 is active, so Accordion2 & Accordion3 will be close.
+   * @summary Accordion1 is active, so Accordion2 & Accordion3 will be close.
    * @param {number} accordionId - The ID of the accordion being clicked.
    * @returns {void}
    */
@@ -43,9 +44,10 @@ const ListResult: React.FC = () => {
 
   return (
     <div className={style['list__users-wrapper']}>
+      {/* Loading state */}
       {userListLoading && <Loader />}
 
-      {/* Loading state */}
+      {/* Empty state */}
       {!userListLoading && !userListError && emptyState && (
         <Text type="title" htmlTag="p">
           User Not Found

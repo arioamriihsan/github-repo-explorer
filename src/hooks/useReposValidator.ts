@@ -20,15 +20,15 @@ const useReposValidator = (
   username: string,
   active: boolean
 ): ReposValidatorResult => {
-  const { reposOwnerHistory, repoRateLimit } = useGlobalContext();
+  const { reposData, repoRateLimit } = useGlobalContext();
 
   /**
    * Tracking if username has been searched. As long as user has not input new username yet
    *
-   * @example const reposOwnerHistory = [username: 'arifitanto', repos: [{id: 1, name: 'Github Repo Explorer'}]]
+   * @example const reposData = [{username: 'arifitanto', repos: [{id: 1, name: 'Github Repo Explorer'}]}]
    * @summary As long as we don't input new username, it won't double hit API repos with username 'arifitanto'
    */
-  const usernameHasBeenSearched = reposOwnerHistory.some(
+  const usernameHasBeenSearched = reposData.some(
     (value) => value?.username === username
   );
 

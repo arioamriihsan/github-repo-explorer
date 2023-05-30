@@ -12,17 +12,18 @@ export interface ReposDetailProps {
 }
 
 const ReposDetail: React.FC<ReposDetailProps> = ({ username, active }) => {
-  const { reposOwnerHistory } = useGlobalContext();
+  const { reposData } = useGlobalContext();
   const { reposDataLoading, reposDataError } = useReposValidator(
     username,
     active
   );
 
   /** Filter repos detail by username */
-  const filteredReposDetail = reposOwnerHistory?.filter(
+  const filteredReposDetail = reposData?.filter(
     (repo) => repo?.username === username
   );
 
+  /** Repos detail data to be displayed */
   const reposDetailData = filteredReposDetail[0]?.repos;
   
   return (
