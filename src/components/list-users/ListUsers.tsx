@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useFetchUsers } from 'hooks';
+import { useGlobalContext } from 'context/GlobalContextProvider';
 import { ReposDetail } from 'components/repos-detail';
 import { Text } from 'common/text';
 import { Loader } from 'common/loader';
@@ -13,6 +14,8 @@ const ListResult: React.FC = () => {
     null
   );
 
+  const { repoRateLimit, setRepoRateLimit } = useGlobalContext();
+
   // Get user list data
   const { userListData, userListFetched, userListLoading, userListError } =
     useFetchUsers();
@@ -25,6 +28,11 @@ const ListResult: React.FC = () => {
    * @returns {void}
    */
   const handleAccordionClick = (accordionId: number): void => {
+    // Restore repo rate limit. Allow re-fetching repo when API throw an error
+    if (repoRateLimit) {
+      setRepoRateLimit(false);
+    }
+
     setActiveAccordionId((prevId) =>
       prevId === accordionId ? null : accordionId
     );
