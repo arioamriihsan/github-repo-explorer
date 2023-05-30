@@ -52,8 +52,6 @@ const useFetchRepo = (username: string, enabled = false) => {
           prevState.concat(reposHistory)
         );
       },
-      // When API throw an error, we set enableRefetchRepos
-      // to allow refetch repo.
       onError: (err: any) => {
         const errStatus = err?.response?.status;
 
