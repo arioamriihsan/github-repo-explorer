@@ -47,7 +47,7 @@ const useFetchRepo = (username: string, enabled = false) => {
         if (isEmpty(reposOwnerHistory)) {
           return setReposOwnerHistory(reposHistory);
         }
-        // Adding new repo id to repoIsHistory
+        // Adding response to repoIsHistory
         return setReposOwnerHistory((prevState) =>
           prevState.concat(reposHistory)
         );
