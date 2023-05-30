@@ -1,9 +1,8 @@
 import { QueryClient } from 'react-query';
 
 /**
- * React Query setting client
- *
- * More info: https://react-query.tanstack.com/guides/important-defaults
+ * React Query setting client. For more info, please see link below
+ * @see {@link https://react-query.tanstack.com/guides/important-defaults}
  *
  */
 export const queryClient = new QueryClient({

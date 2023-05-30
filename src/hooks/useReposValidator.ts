@@ -38,7 +38,7 @@ const useReposValidator = (
    * - Accordion active state
    * - Username has not been searched before
    * - Within rate limit API
-   * @see GlobalContextProvider.tsx why we need this state
+   * @see GlobalContextProvider.tsx - Why we need repoRateLimit state
    * @returns {boolean}
    */
   const shouldFetchRepo = useMemo(() => {

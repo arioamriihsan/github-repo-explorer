@@ -13,7 +13,7 @@ export const apiInstance = axios.create({
 /**
  * handle HTTP GET to RestAPI
  */
-export const get = <T = any>(
+const get = <T = any>(
   endpoint: string,
   queryParam: any = {},
   config?: AxiosRequestConfig

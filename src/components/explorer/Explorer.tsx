@@ -48,8 +48,8 @@ const Explorer: React.FC = () => {
         className={classNames(style['custom__btn'], {
           [style['disabled']]: userListLoading
         })}
-        onClick={handleClick}
         disabled={userListLoading}
+        onClick={handleClick}
       >
         {userListLoading ? 'Loading' : 'Search'}
       </button>

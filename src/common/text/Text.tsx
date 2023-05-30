@@ -40,7 +40,7 @@ const Text: React.FC<React.PropsWithChildren<TextProps>> = ({
    * Basically react does not support expression for defining tags, so we
    * need to define the variable again
    *
-   * @see https://reactjs.org/docs/jsx-in-depth.html#choosing-the-type-at-runtime
+   * @see {@link https://reactjs.org/docs/jsx-in-depth.html#choosing-the-type-at-runtime}
    */
   const CustomTag = htmlTag;
 
