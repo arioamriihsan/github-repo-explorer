@@ -3,7 +3,6 @@ import useFetchRepo from './useFetchRepos';
 import { useGlobalContext } from 'context/GlobalContextProvider';
 
 interface ReposValidatorResult {
-  shouldFetchRepo: boolean;
   reposDataLoading: boolean;
   reposDataError: boolean;
   refetchRepos: any;
@@ -57,7 +56,6 @@ const useReposValidator = (
   } = useFetchRepo(username, shouldFetchRepo);
 
   return {
-    shouldFetchRepo,
     reposDataLoading,
     reposDataError,
     refetchRepos
