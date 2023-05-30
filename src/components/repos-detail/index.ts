@@ -1,1 +1,1 @@
-export { default as ReposDetail } from './ReposDetail';
+export { default } from './ReposDetail';

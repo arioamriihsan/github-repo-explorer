@@ -1,1 +1,1 @@
-export { default as RepoError } from './RepoError';
+export { default } from './RepoError';

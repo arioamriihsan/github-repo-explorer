@@ -1,7 +1,7 @@
 import React from 'react';
 import { useReposValidator } from 'hooks';
 import { useGlobalContext } from 'context/GlobalContextProvider';
-import { Text } from 'common/text';
+import { Text } from 'common';
 import { ReposDetailProps } from 'components/repos-detail/ReposDetail';
 import style from './RepoError.module.css';
 

@@ -5,7 +5,7 @@ import React, {
   cloneElement
 } from 'react';
 import { ChevronDown, ChevronUp } from 'react-feather';
-import { Text } from 'common/text';
+import { Text } from 'common';
 import style from './Accordion.module.css';
 
 interface AccordionProps {

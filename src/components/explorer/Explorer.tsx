@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import classNames from 'classnames';
-import { Text } from 'common/text';
+import { Text } from 'common';
 import { useFetchUsers } from 'hooks';
 import { useGlobalContext } from 'context/GlobalContextProvider';
 import { isEmpty } from 'utils';

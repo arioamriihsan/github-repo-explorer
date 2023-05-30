@@ -1,1 +1,1 @@
-export { default as RepoLoading } from './RepoLoading';
+export { default } from './RepoLoading';

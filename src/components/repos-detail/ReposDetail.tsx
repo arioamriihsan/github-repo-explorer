@@ -2,7 +2,7 @@ import React from 'react';
 import { useReposValidator } from 'hooks';
 import { useGlobalContext } from 'context/GlobalContextProvider';
 import { RepoLoading, RepoDetailItem, RepoError } from './components';
-import { Text } from 'common/text';
+import { Text } from 'common';
 import { isEmpty } from 'utils';
 import style from './ReposDetail.module.css';
 

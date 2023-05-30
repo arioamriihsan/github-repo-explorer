@@ -1,1 +1,1 @@
-export { default as Explorer } from './Explorer';
+export { default } from './Explorer';

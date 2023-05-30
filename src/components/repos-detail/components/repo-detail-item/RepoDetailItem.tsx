@@ -1,6 +1,6 @@
 import React from 'react';
 import { Star } from 'react-feather';
-import { Text } from 'common/text';
+import { Text } from 'common';
 import style from './RepoDetailItem.module.css';
 
 interface RepoDetailItemProps {

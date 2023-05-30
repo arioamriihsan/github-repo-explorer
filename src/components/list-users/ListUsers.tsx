@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useFetchUsers } from 'hooks';
 import { useGlobalContext } from 'context/GlobalContextProvider';
-import { ReposDetail } from 'components/repos-detail';
-import { Text } from 'common/text';
-import { Loader } from 'common/loader';
+import { ReposDetail } from 'components';
+import { Text, Loader } from 'common';
 import Accordion from 'common/accordion/Accordion';
 import { isEmpty } from 'utils';
 import style from './ListUsers.module.css';
 
-const ListResult: React.FC = () => {
+const ListUsers: React.FC = () => {
   // State to track accordion states
   const [activeAccordionId, setActiveAccordionId] = useState<number | null>(
     null
@@ -83,4 +82,4 @@ const ListResult: React.FC = () => {
   );
 };
 
-export default ListResult;
+export default ListUsers;
