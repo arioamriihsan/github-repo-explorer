@@ -25,7 +25,7 @@ interface GlobalContextType {
   setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
   setReposData: Dispatch<SetStateAction<ReposDataType[]>>;
   setRepoRateLimit: Dispatch<SetStateAction<boolean>>;
-  clearReposOwnerHistory: () => void;
+  clearReposData: () => void;
 }
 
 export const GlobalContext = createContext<GlobalContextType | undefined>(
@@ -49,7 +49,7 @@ const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [repoRateLimit, setRepoRateLimit] = useState<boolean>(false);
 
   /** Function to clear repos data */
-  const clearReposOwnerHistory = useCallback(() => {
+  const clearReposData = useCallback(() => {
     setReposData([]);
   }, []);
 
@@ -64,7 +64,7 @@ const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setPrevSuccessUserName,
     setReposData,
     setRepoRateLimit,
-    clearReposOwnerHistory
+    clearReposData
   };
 
   return (

@@ -10,7 +10,7 @@ const useFetchUser = () => {
     prevSuccessUsername,
     setShouldFetchUser,
     setPrevSuccessUserName,
-    clearReposOwnerHistory
+    clearReposData
   } = useGlobalContext();
 
   const fetchUser = useQuery(
@@ -31,8 +31,8 @@ const useFetchUser = () => {
         // Set previous success username to be displayed in Explorer.tsx
         setPrevSuccessUserName(username);
 
-        // Clear reposOwnerHistory to empty array, allowed fetch next detail repo user
-        clearReposOwnerHistory();
+        // Clear repos data to empty array, allow to fetch next detail repo user
+        clearReposData();
       },
       onError: () => setShouldFetchUser(false)
     }
