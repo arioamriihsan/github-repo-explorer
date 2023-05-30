@@ -3,15 +3,11 @@ import React, {
   useCallback,
   useContext,
   createContext,
-  ReactNode,
+  PropsWithChildren,
   Dispatch,
   SetStateAction
 } from 'react';
 import { FetchRepoSuccessResponse } from 'network/types/response.types';
-
-interface Props {
-  children: ReactNode;
-}
 
 export interface ReposOwnerHistory {
   username: string;
@@ -36,7 +32,7 @@ export const GlobalContext = createContext<GlobalContextType | undefined>(
   undefined
 );
 
-const GlobalProvider: React.FC<Props> = ({ children }) => {
+const GlobalProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // Username from input
   const [username, setUsername] = useState<string>('');
 

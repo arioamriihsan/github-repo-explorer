@@ -1,6 +1,5 @@
 import React, {
   PropsWithChildren,
-  ReactNode,
   ReactElement,
   Children,
   cloneElement
@@ -13,7 +12,6 @@ interface AccordionProps {
   accordionLabel: string;
   active: boolean;
   onClick: () => void;
-  children: ReactNode;
 }
 
 const Accordion: React.FC<PropsWithChildren<AccordionProps>> = ({
