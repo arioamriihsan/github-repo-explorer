@@ -23,10 +23,12 @@ interface GlobalContextType {
   prevSuccessUsername: string;
   shouldFetchUser: boolean;
   reposOwnerHistory: ReposOwnerHistory[];
+  repoRateLimit: boolean;
   setUsername: Dispatch<SetStateAction<string>>;
   setShouldFetchUser: Dispatch<SetStateAction<boolean>>;
   setPrevSuccessUserName: Dispatch<SetStateAction<string>>;
   setReposOwnerHistory: Dispatch<SetStateAction<ReposOwnerHistory[]>>;
+  setRepoRateLimit: Dispatch<SetStateAction<boolean>>;
   clearReposOwnerHistory: () => void;
 }
 
@@ -49,6 +51,9 @@ const GlobalProvider: React.FC<Props> = ({ children }) => {
     ReposOwnerHistory[]
   >([]);
 
+  /** State to prevent looping API to fetch repo when API throw an error */
+  const [repoRateLimit, setRepoRateLimit] = useState<boolean>(false);
+
   /**
    * Function to clear repoIdHistory
    */
@@ -61,10 +66,12 @@ const GlobalProvider: React.FC<Props> = ({ children }) => {
     prevSuccessUsername,
     shouldFetchUser,
     reposOwnerHistory,
+    repoRateLimit,
     setUsername,
     setShouldFetchUser,
     setPrevSuccessUserName,
     setReposOwnerHistory,
+    setRepoRateLimit,
     clearReposOwnerHistory
   };
 

@@ -9,7 +9,8 @@ import { isEmpty } from 'utils';
 import { FetchRepoSuccessResponse } from 'network/types/response.types';
 
 const useFetchRepo = (username: string, enabled = false) => {
-  const { reposOwnerHistory, setReposOwnerHistory } = useGlobalContext();
+  const { reposOwnerHistory, setReposOwnerHistory, setRepoRateLimit } =
+    useGlobalContext();
 
   return useQuery(
     ['List Repos'], // Query key
@@ -39,6 +40,9 @@ const useFetchRepo = (username: string, enabled = false) => {
         );
         reposHistory.push({ username, repos: reposDetail });
 
+        // Restore repo error message
+        setRepoRateLimit(false);
+
         // Assuming init search
         if (isEmpty(reposOwnerHistory)) {
           return setReposOwnerHistory(reposHistory);
@@ -47,6 +51,16 @@ const useFetchRepo = (username: string, enabled = false) => {
         return setReposOwnerHistory((prevState) =>
           prevState.concat(reposHistory)
         );
+      },
+      // When API throw an error, we set enableRefetchRepos
+      // to allow refetch repo.
+      onError: (err: any) => {
+        const errStatus = err?.response?.status;
+
+        // API rate limit
+        if (errStatus === 403) {
+          setRepoRateLimit(true);
+        }
       }
     }
   );

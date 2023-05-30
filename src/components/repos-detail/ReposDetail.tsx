@@ -36,7 +36,7 @@ const ReposDetail: React.FC<ReposDetailProps> = ({ username, active }) => {
       )}
 
       {/* Empty state */}
-      {!reposDataLoading && isEmpty(reposDetailData) && (
+      {!reposDataLoading && !reposDataError && isEmpty(reposDetailData) && (
         <Text type="title" htmlTag="p" className={style['repos__empty']}>
           User Has No Repository
         </Text>
